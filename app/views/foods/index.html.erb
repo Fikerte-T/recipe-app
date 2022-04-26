@@ -1,8 +1,10 @@
-<%= button_to 'Add Food', new_user_food_path, type: 'button', class: 'btn btn-primary' %>
+<%= link_to 'Add Food', new_user_food_path %>
 
 <% if @foods.length > 0 %>
     <%= render partial: 'foods', locals: {foods: @foods } %>
 <% else %>
-    <%= 'No food to display' %>
+    <div>
+        <%= 'No food to display' %>
+    </div>
 <% end %>
 

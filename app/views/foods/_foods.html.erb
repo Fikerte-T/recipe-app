@@ -10,10 +10,10 @@
     <% foods.each do |food| %>
         <tbody>
             <tr>
-                <td>food.name</td>
-                <td>food.measurement_unit</td>
-                <td>food.price</td>
-                <td><%= link_to 'Delete', user_food_path, method: :delete %></td>
+                <td><%=food.name%></td>
+                <td><%=food.measurement_unit%></td>
+                <td><%=food.price%></td>
+                <td><%= button_to 'Delete', user_food_path(@user.id, food.id), method: :delete, class: 'btn btn-danger'  %></td>
             </tr>
         </tbody>
     <% end %>
