@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   resources :public_recipes
   resources :general_shopping_list
 
-  root "foods#index"
+  root 'foods#index'
 end
