@@ -1,1 +1,10 @@
-<h1><%= 'foods page'%><h1>
+<%= link_to 'Add Food', new_user_food_path %>
+
+<% if @foods.length > 0 %>
+    <%= render partial: 'foods', locals: {foods: @foods } %>
+<% else %>
+    <div>
+        <%= 'No food to display' %>
+    </div>
+<% end %>
+

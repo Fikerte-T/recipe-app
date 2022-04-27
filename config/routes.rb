@@ -2,10 +2,13 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  resources :foods
-  resources :recipes
+  resources :users do
+    resources :general_shopping_list
+    resources :foods
+    resources :recipes do
+      resources :recipe_food
+    end
+  end
   resources :public_recipes
-  resources :general_shopping_list
-
-  root 'foods#index'
+  root 'public_recipes#index'
 end
