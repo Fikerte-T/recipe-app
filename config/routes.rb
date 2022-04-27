@@ -6,8 +6,9 @@ Rails.application.routes.draw do
     resources :general_shopping_list
     resources :foods
     resources :recipes do
-      resources :public_recipes
+      resources :recipe_food
     end
   end
-  root 'foods#index'
+  resources :public_recipes
+  root 'public_recipes#index'
 end
