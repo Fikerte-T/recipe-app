@@ -5,9 +5,8 @@ Rails.application.routes.draw do
   resources :users do
     resources :general_shopping_list
     resources :foods
-    resources :recipes do
-      resources :recipe_food
-    end
+    resources :recipes 
+    resources :recipe_food
   end
   resources :public_recipes
   root 'public_recipes#index'
