@@ -1,1 +1,9 @@
-<h1><%= @public_recipes.name %></h1>
+<h1><%= 'Public recipes' %></h1>
+<% @public_recipes.each do |r| %>
+    <%= r.name %>
+    <%= r.user.name %>
+    <%= 'Total food items: ' %>
+    <%= 'Total price: ' %>
+
+
+<%end%>
