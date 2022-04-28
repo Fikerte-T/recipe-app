@@ -1,1 +1,21 @@
-<h1><%= 'public recipes page'%></h1>
+<div>
+    <h1 class='text-center mt-3'><%= 'Public recipes' %></h1>
+    <% if @public_recipes.length > 0 %>
+        <% @public_recipes.each do |r| %>
+                <div class='w-75 d-flex justify-content-around m-5 mx-auto p-3 border border-secondary rounded'>
+                    <div>
+                        <h3><%=link_to r.name, recipe_path(id: r.id)%></h3>
+                        <p>By: <%= r.user.name %></p>
+                    </div>
+                    <div>
+                        <p class='font-weight-bold'>Total food items: <%= r.foods.length%></p>
+                        <p class='font-weight-bold'>Total price: <%= r.foods.sum ('quantity * price') %></p>
+                    </div>
+                </div>
+        <%end%>
+    <% else %>
+        <div>
+            <%= 'No public recipes to display' %>
+        </div>
+    <% end %>
+</div>
