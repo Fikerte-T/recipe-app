@@ -10,8 +10,12 @@ Rails.application.routes.draw do
     resources :general_shopping_list
     resources :foods
     resources :recipes 
-    resources :recipe_food
+    resources :recipe_foods
   end
+  
   resources :public_recipes
+  resources :recipes
+  resources :recipe_foods
+
   root 'users#index'
 end
