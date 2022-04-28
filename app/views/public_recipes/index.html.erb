@@ -2,8 +2,8 @@
 <% @public_recipes.each do |r| %>
     <%= r.name %>
     <%= r.user.name %>
-    <%= 'Total food items: ' %>
-    <%= 'Total price: ' %>
+    <%= 'Total food items: ' r.foods.count%>
+    <%= 'Total price: ' r.foods.sum : %>
 
 
 <%end%>
