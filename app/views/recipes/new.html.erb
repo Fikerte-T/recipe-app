@@ -4,25 +4,25 @@
     </div>
 <% end %>
 <h1>Add Recipe</h1>
-<%= form_with url: user_recipes_path, method: :post, local: true, scope: :recipe do |f| %>
+  <%= form_with model: @recipe, url: "/users/#{current_user.id}/recipes" do |form| %>
     <p>
-        <%= f.label :name %><br>
-        <%= f.text_field :name %>
+        <%= form.label :name %><br>
+        <%= form.text_field :name %>
     </p>
     <p>
-        <%= f.label :preparation_time %><br>
-        <%= f.text_field :preparation_time %>
+        <%= form.label :preparation_time %><br>
+        <%= form.text_field :preparation_time %>
     </p>
     <p>
-        <%= f.label :cooking_time %><br>
-        <%= f.text_field :cooking_time %>
+        <%= form.label :cooking_time %><br>
+        <%= form.text_field :cooking_time %>
     </p>
     <p>
-        <%= f.label :description %><br>
-        <%= f.text_area :description %>
+        <%= form.label :description %><br>
+        <%= form.text_area :description %>
     </p>
     
     <p>
-        <%= f.submit %>
+        <%= form.submit %>
     </p>
 <%end%>

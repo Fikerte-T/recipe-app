@@ -1,7 +1,7 @@
 <div>
     <div>
         <h1>
-            <%= link_to "Recipe #{index + 1}", user_recipe_path(@user.id, recipe.id) %>
+            <%= link_to recipe.name, user_recipe_path(@user.id, recipe.id) %>
         </h1>
         <p>
             <%= "By #{@user.name}" %>

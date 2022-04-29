@@ -1,5 +1,4 @@
-<%= link_to 'Add Recipe', new_user_recipe_path %>
-
+<%= link_to "Add Recipe", new_recipe_path %>
 <% if @recipes.length > 0 %>
     <% @recipes.each_with_index do |recipe, index| %>
         <%= render partial: "shared/recipeCard", locals:{ recipe: recipe, index:index } %>
