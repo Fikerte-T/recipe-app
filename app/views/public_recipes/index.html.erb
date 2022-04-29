@@ -8,7 +8,7 @@
                         <p>By: <%= r.user.name %></p>
                     </div>
                     <div>
-                        <p class='font-weight-bold'>Total food items: <%= r.foods.length%></p>
+                        <p class='font-weight-bold'>Total food items: <%= r.foods.distinct.count(:id)%></p>
                         <p class='font-weight-bold'>Total price: <%= r.foods.sum ('quantity * price') %></p>
                     </div>
                 </div>
