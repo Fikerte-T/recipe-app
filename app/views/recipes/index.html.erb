@@ -2,7 +2,7 @@
 
 <% if @recipes.length > 0 %>
     <% @recipes.each_with_index do |recipe, index| %>
-        <%= render partial: "partials/recipeCard", locals:{ recipe: recipe, index:index } %>
+        <%= render partial: "shared/recipeCard", locals:{ recipe: recipe, index:index } %>
     <% end %>
 <% else %>
     <div>
