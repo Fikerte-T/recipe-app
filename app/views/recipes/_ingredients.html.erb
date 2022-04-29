@@ -1,0 +1,24 @@
+<table class='table'>
+    <thead>
+        <tr>
+            <th scope="col">Food</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Value</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+        <tbody>
+            <% recipe_food.each do |r|%>
+                <tr>
+                    <td><%= r.food.name%></td>
+                    <td><%= r.quantity%></td>
+                    <td><%= r.food.price * r.quantity%></td>  
+                    <td><%= link_to 'Modify' %><%=' '%><%= link_to 'Remove' %></td>
+
+                </tr>
+                
+            <%end%>
+
+        </tbody>
+      
+</table> 

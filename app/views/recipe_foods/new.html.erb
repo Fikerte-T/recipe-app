@@ -1,0 +1,19 @@
+<% flash.each do |type, msg| %>
+    <div>
+    <%= msg %>
+    </div>
+<% end %>
+<h1>Add ingredient</h1>
+<%= form_with url: recipe_recipe_foods_path, method: :post, local: true, scope: :recipe_food do |f| %>
+    <p>
+        <%= f.label :Food %><br>
+        <%= f.select :food_id, @foods.collect { |food| [food.name, food.id] } %>
+    </p>
+    <p>
+        <%= f.label :quantity %><br>
+        <%= f.number_field :quantity, min: 0 %>
+    </p>
+    <p>
+        <%= f.submit 'Add ingredient', class: 'btn btn-primary' %>
+    </p>
+<%end%>
