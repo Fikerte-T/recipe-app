@@ -1,1 +1,13 @@
-<%= recipe.name%>
+<div>
+    <div>
+        <h1>
+            <%= link_to "Recipe #{index + 1}", user_recipe_path(@user.id, recipe.id) %>
+        </h1>
+        <p>
+            <%= "By #{@user.name}" %>
+        </p>
+    </div>
+    <div>
+        <p> <%= recipe.description %><p>
+    </div>
+</div>
