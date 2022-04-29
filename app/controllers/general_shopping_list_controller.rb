@@ -1,7 +1,7 @@
 class GeneralShoppingListController < ApplicationController
   def index
     @recipes = current_user.recipes
-    
+
     total_items(@recipes)
     total_value(@recipes)
   end
@@ -9,8 +9,8 @@ class GeneralShoppingListController < ApplicationController
   def total_items(recipes)
     @total_food = 0
     recipes.map do |r|
-      0 unless r.foods.any? 
-      @total_food += r.foods.distinct.count(:id) 
+      0 unless r.foods.any?
+      @total_food += r.foods.distinct.count(:id)
     end
     @total_food
   end
@@ -19,7 +19,7 @@ class GeneralShoppingListController < ApplicationController
     @total_value = 0
     recipes.each do |r|
       r.recipe_foods.each do |recipe_food|
-       @total_value += recipe_food.food.price * recipe_food.quantity
+        @total_value += recipe_food.food.price * recipe_food.quantity
       end
     end
     @total_value
