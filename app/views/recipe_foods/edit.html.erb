@@ -1,0 +1,15 @@
+<h1 class='text-center mt-3'>Edit ingredient</h1>
+<%= form_with model: @recipe_food, url: recipe_recipe_food_path(recipe_id: @recipe_food.recipe_id, id: @recipe_food.id), method: :patch do |f| %>
+    <p>
+        <%= f.label :Food %><br>
+        <%= f.select :food_id, current_user.foods.collect {|food| [food.name, food.id]} %>
+    </p>
+    <p>
+        <%= f.label :quantity %><br>
+        <%= f.number_field :quantity, min: 0 %>
+    </p>
+    <p>
+        <%= f.submit 'Update ingredient', class: 'btn btn-primary' %>
+    </p>
+<% end %> 
+

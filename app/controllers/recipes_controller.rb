@@ -6,6 +6,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.includes(:recipe_foods).find(params[:id])
+    @recipe_foods = @recipe.recipe_foods.includes(:food)
   end
 
   def new
@@ -13,7 +14,7 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = current_user.recipes.new(params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description))
+    @recipe = current_user.recipes.new(params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public))
     if @recipe.save
       flash.notice = 'Recipe was successfully created.'
       redirect_to user_recipes_path(@recipe.user)
@@ -21,6 +22,16 @@ class RecipesController < ApplicationController
       flash.alert = 'Recipe was not created.'
       render :new
     end
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update(public: params[:public])
+      flash[:success] = 'public status successfully updated'
+    else
+      flash[:error] = 'Error: could not update public status'
+    end
+    redirect_to recipe_path(@recipe)
   end
 
   def destroy
