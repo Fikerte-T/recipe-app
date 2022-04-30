@@ -11,8 +11,8 @@ RSpec.describe User, type: :model do
       expect(subject).to be_valid
     end
     it 'email should be present' do
-        subject.email = nil
-        expect(subject).to_not be_valid
-      end
+      subject.email = nil
+      expect(subject).to_not be_valid
+    end
   end
 end
