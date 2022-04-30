@@ -1,0 +1,24 @@
+<table class='table'>
+    <thead>
+        <tr>
+            <th scope="col">Food</th>
+            <th scope="col">Measurement unit</th>
+            <th scope="col">Unit price</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <% foods.each do |food| %>
+        <tbody>
+            <tr>
+                <td><%=food.name%></td>
+                <td><%=food.measurement_unit%></td>
+                <td><%=food.price%></td>
+                <td>
+                    <% if can? :destroy, food %> 
+                        <%= button_to 'Delete', user_food_path(@user.id, food.id), method: :delete, class: 'btn btn-danger'  %>    
+                    <% end %>
+                </td>
+            </tr>
+        </tbody>
+    <% end %>
+</table> 

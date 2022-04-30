@@ -1,0 +1,11 @@
+<div>
+    <div>
+        <h1>
+            <%= link_to recipe.name, user_recipe_path(@user.id, recipe.id) %>
+        </h1>
+            <%= button_to "Remove Recipe", user_recipe_path(@user.id, recipe.id), :method => :delete %>
+    </div>
+    <div>
+        <p> <%= recipe.description %><p>
+    </div>
+</div>

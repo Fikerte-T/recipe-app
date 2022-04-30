@@ -1,0 +1,34 @@
+<h1 class='text-center mt-3'><%= @recipe.name%></h1>  
+<div class='d-flex justify-content-around m-5'>
+    <div>
+        <p>Preparation time: <%= @recipe.preparation_time%></p>
+        <p>Cooking time: <%= @recipe.cooking_time%></p>
+        <p><%= @recipe.description%></p>
+    </div>
+    
+    <div>
+        <% if can? :manage, @recipe%>
+            <%= form_with url: user_recipe_path(@recipe), method: "put" do |form| %>
+                <div class="form-check form-switch">
+                    <% if @recipe.public == false %>
+                        <%= form.check_box :public, class:"form-check-input fs-4", id:"flexSwitchCheckDefault", onchange: "this.form.submit();"%>
+                        <label class="form-check-label fs-4" for="flexSwitchCheckDefault">Public</label>
+                    <% else %>
+                        <%= form.check_box :public, class:"form-check-input fs-4", id:"flexSwitchCheckChecked", checked: true, onchange: "this.form.submit();" %>
+                        <label class="form-check-label fs-4" for="flexSwitchCheckChecked">Public</label>
+                    <%end%>
+                </div>
+            <%end%> 
+        <%end%>
+    </div>   
+</div>
+<div class='d-flex justify-content-around'>
+    <% if can? :manage, @recipe%>
+        <%= link_to 'Add ingredient', new_recipe_recipe_food_path(@recipe), class: 'text-decoration-none border p-2 rounded cursor-pointer'%>
+        <%= link_to 'Generate shopping list', user_general_shopping_list_index_path(current_user.id), class: 'text-decoration-none border p-2 rounded cursor-pointer' %>
+    <%end%>
+
+</div>
+<div class='mt-5'>
+    <%= render partial: 'ingredients', locals: { recipe_foods: @recipe_foods}%>  
+</div>

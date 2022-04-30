@@ -1,0 +1,17 @@
+<div>
+    <h1 class='text-center mt-3'><%= 'Shopping List for' %><%= current_user.name%></h1>
+    <% if @recipes.length > 0 %>
+        <div class='text-center m-5'>
+            <p class='font-weight-bold'>Amount of food items to buy: <%= @total_food %></p>
+            <p class='font-weight-bold'>Total value of food needed: $<%= @total_value %></p>
+        </div>
+        <%= render partial: 'shoppingList', locals: { r: @recipes}%>
+    <% else %>
+        <div>
+            <%= 'No shopping list to display' %>
+        </div>
+    <% end %>
+</div>
+
+
+

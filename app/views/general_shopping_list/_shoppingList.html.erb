@@ -1,0 +1,22 @@
+<table class='table'>
+    <thead>
+        <tr>
+            <th scope="col">Food</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+        </tr>
+    </thead>
+        <tbody>
+            <%@recipes.each do |r|%>
+                <%r.recipe_foods.each do |recipe_food|%>
+                    <tr>
+                        <td><%= recipe_food.food.name%></td>
+                        <td><%= recipe_food.quantity%></td>
+                        <td><%= recipe_food.food.price * recipe_food.quantity%></td>      
+                    </tr>
+                <%end%>
+            <%end%>
+
+        </tbody>
+      
+</table> 

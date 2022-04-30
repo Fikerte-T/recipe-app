@@ -1,0 +1,23 @@
+<% flash.each do |type, msg| %>
+    <div>
+    <%= msg %>
+    </div>
+<% end %>
+<h1>Add Food</h1>
+<%= form_with url: user_foods_path, method: :post, local: true, scope: :food do |f| %>
+    <p>
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+    </p>
+    <p>
+        <%= f.label :measurement_unit %><br>
+        <%= f.text_field :measurement_unit %>
+    </p>
+    <p>
+        <%= f.label :unit_price %><br>
+        <%= f.text_field :price %>
+    </p>
+    <p>
+        <%= f.submit %>
+    </p>
+<%end%>
