@@ -1,26 +1,24 @@
-# frozen_string_literal: true
-
 class Ability
   include CanCan::Ability
 
   def initialize(user)
     user ||= User.new # guest user (not logged in)
-   
-      # can :read, Food
-      # can :destroy, Food do |food|
-      #   food.user.id == user.id
-      # end
 
-      # can :read, Recipe do |recipe|
-      #   recipe.user == user || recipe.public
-      # end
+    # can :read, Food
+    # can :destroy, Food do |food|
+    #   food.user.id == user.id
+    # end
 
-      # can [:update, :destroy], Recipe do |recipe|
-      #   recipe.user == user
-      # end
-      can :manage, Recipe, user_id: user.id
-      can :manage, Food, user_id: user.id
-      can :read, :all
+    # can :read, Recipe do |recipe|
+    #   recipe.user == user || recipe.public
+    # end
+
+    # can [:update, :destroy], Recipe do |recipe|
+    #   recipe.user == user
+    # end
+    can :manage, Recipe, user_id: user.id
+    can :manage, Food, user_id: user.id
+    can :read, :all
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
