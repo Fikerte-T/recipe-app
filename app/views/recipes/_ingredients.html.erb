@@ -12,9 +12,12 @@
                 <tr>
                     <td><%= r.food.name%></td>
                     <td><%= r.quantity%></td>
-                    <td><%= r.food.price * r.quantity%></td>  
-                    <td><%= link_to "Modify", edit_recipe_recipe_food_path(recipe_id: @recipe.id, id: r.id) %><%=' '%>
-                    <%= button_to "Remove", recipe_recipe_food_path(recipe_id: @recipe.id, id: r.id), method: :delete, class:"btn btn-danger" %>
+                    <td><%= r.food.price * r.quantity%></td> 
+                    <td>
+                        <% if can? :manage, @recipe %> 
+                            <%= link_to "Modify", edit_recipe_recipe_food_path(recipe_id: @recipe.id, id: r.id) %><%=' '%>
+                            <%= button_to "Remove", recipe_recipe_food_path(recipe_id: @recipe.id, id: r.id), method: :delete, class:"btn btn-danger" %>
+                        <% end %>
                     </td>
 
                 </tr>

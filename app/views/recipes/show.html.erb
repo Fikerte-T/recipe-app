@@ -7,17 +7,26 @@
     </div>
     
     <div>
-        <%= 'Public'%>
-        <% if @recipe.public %>
-            <input type="checkbox" checked data-toggle="toggle">
-        <%else%>
-            <input type="checkbox" data-toggle="toggle">
+        <% if can? :manage, @recipe%>
+            <%= form_with url: user_recipe_path(@recipe), method: "put" do |form| %>
+                <div class="form-check form-switch">
+                    <% if @recipe.public == false %>
+                        <%= form.check_box :public, class:"form-check-input fs-4", id:"flexSwitchCheckDefault", onchange: "this.form.submit();"%>
+                        <label class="form-check-label fs-4" for="flexSwitchCheckDefault">Public</label>
+                    <% else %>
+                        <%= form.check_box :public, class:"form-check-input fs-4", id:"flexSwitchCheckChecked", checked: true, onchange: "this.form.submit();" %>
+                        <label class="form-check-label fs-4" for="flexSwitchCheckChecked">Public</label>
+                    <%end%>
+                </div>
+            <%end%> 
         <%end%>
     </div>   
 </div>
 <div class='d-flex justify-content-around'>
-    <%= link_to 'Add ingredient', new_recipe_recipe_food_path(@recipe), class: 'text-decoration-none border p-2 rounded cursor-pointer'%>
-    <%= link_to 'Generate shopping list', user_general_shopping_list_index_path(current_user.id), class: 'text-decoration-none border p-2 rounded cursor-pointer' %>
+    <% if can? :manage, @recipe%>
+        <%= link_to 'Add ingredient', new_recipe_recipe_food_path(@recipe), class: 'text-decoration-none border p-2 rounded cursor-pointer'%>
+        <%= link_to 'Generate shopping list', user_general_shopping_list_index_path(current_user.id), class: 'text-decoration-none border p-2 rounded cursor-pointer' %>
+    <%end%>
 
 </div>
 <div class='mt-5'>

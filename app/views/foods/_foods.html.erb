@@ -13,7 +13,11 @@
                 <td><%=food.name%></td>
                 <td><%=food.measurement_unit%></td>
                 <td><%=food.price%></td>
-                <td><%= button_to 'Delete', user_food_path(@user.id, food.id), method: :delete, class: 'btn btn-danger'  %></td>
+                <td>
+                    <% if can? :destroy, food %> 
+                        <%= button_to 'Delete', user_food_path(@user.id, food.id), method: :delete, class: 'btn btn-danger'  %>    
+                    <% end %>
+                </td>
             </tr>
         </tbody>
     <% end %>

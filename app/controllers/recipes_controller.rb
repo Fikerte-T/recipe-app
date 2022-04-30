@@ -26,6 +26,16 @@ class RecipesController < ApplicationController
     end
   end
 
+  def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update(public: params[:public])
+      flash[:success] = 'public status successfully updated'
+    else
+      flash[:error] = 'Error: could not update public status'
+    end
+    redirect_to recipe_path(@recipe)
+  end
+
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy!
